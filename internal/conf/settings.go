@@ -13,6 +13,12 @@ type Setting struct {
 	vp *viper.Viper
 }
 
+type RedisSettingS struct {
+	Host     string
+	Password string
+	DB       int
+}
+
 type JWTSettingS struct {
 	Secret string
 	Issuer string

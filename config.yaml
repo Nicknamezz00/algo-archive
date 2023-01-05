@@ -31,3 +31,8 @@ JWT:
   Secret: 12f821f18a2018fe89b2f0512345cbf2
   Issuer: wurunze
   Expire: 86400
+
+Redis:
+  Host: redis:6379
+  Password:
+  DB:

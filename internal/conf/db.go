@@ -1,6 +1,7 @@
 package conf
 
 import (
+	"github.com/go-redis/redis/v8"
 	"github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -12,18 +13,18 @@ import (
 )
 
 var (
-	db   *gorm.DB
-	once sync.Once
+	db    *gorm.DB
+	Redis *redis.Client
+	once  sync.Once
 )
 
-// TODO: add redis
-//func setupDBEngine() {
-//	Redis = redis.NewClient(&redis.Options{
-//		Addr:     redisSetting.Host,
-//		Password: redisSetting.Password,
-//		DB:       redisSetting.DB,
-//	})
-//}
+func setupDBEngine() {
+	Redis = redis.NewClient(&redis.Options{
+		Addr:     redisSetting.Host,
+		Password: redisSetting.Password,
+		DB:       redisSetting.DB,
+	})
+}
 
 func InitGormDB() *gorm.DB {
 	once.Do(func() {

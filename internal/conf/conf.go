@@ -9,6 +9,7 @@ import (
 var (
 	fileLoggerSetting *FileLoggerSettingS
 	loggerSetting     *LoggerSettingS
+	redisSetting      *RedisSettingS
 	DBSetting         *DatabaseSettingS
 	MysqlSetting      *MySQLSettingS
 	ServerSetting     *ServerSettingS
@@ -23,7 +24,7 @@ func Initialize() {
 	}
 
 	setupLogger()
-	//setupDBEngine()
+	setupDBEngine()
 }
 
 func setupSetting() error {
@@ -39,11 +40,13 @@ func setupSetting() error {
 		"FileLogger": &fileLoggerSetting,
 		"Server":     &ServerSetting,
 		"JWT":        &JWTSetting,
+		"Redis":      &redisSetting,
 	}
 	if err = s.Unmarshal(mp); err != nil {
 		return err
 	}
 
+	JWTSetting.Expire *= time.Second
 	ServerSetting.ReadTimeOut *= time.Second
 	ServerSetting.WriteTimeOut *= time.Second
 
