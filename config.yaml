@@ -1,0 +1,33 @@
+MySQL:
+  UserName: root
+  Password: root
+  Host: 127.0.0.1:3306
+  DBName: algo_archive_db
+  Charset: utf8mb4
+  ParseTime: True
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+
+Database:
+  LogLevel: error # silent | error | warn | info
+  TablePrefix: aa_
+
+Logger:
+  Level: debug
+
+FileLogger:
+  SavePath: data/aa-ce/logs
+  FileName: app
+  FileExt: .log
+
+Server:
+  RunMode: debug
+  HTTPIp: 127.0.0.1
+  HTTPPort: 8080
+  ReadTimeOut: 60
+  WriteTimeOut: 60
+
+JWT:
+  Secret: 12f821f18a2018fe89b2f0512345cbf2
+  Issuer: wurunze
+  Expire: 86400
